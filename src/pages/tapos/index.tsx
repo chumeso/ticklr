@@ -74,8 +74,6 @@ const Page: React.FunctionComponent = () => {
         setAccountIsCreated(true)
       }
       const genesisAccount = await aptosClient.getAccount(account.accountAddress.toString())
-      setSequenceNumber(Number(genesisAccount.sequence_number))
-      console.log('genesisAccount', genesisAccount)
       setData('sequence_number', Number(genesisAccount.sequence_number))
     } catch (e: any) {
       console.log(e)
@@ -138,7 +136,10 @@ const Page: React.FunctionComponent = () => {
         }
         payloads.push(txn)
       }
-      aptos.transaction.batch.forSingleAccount({ sender: account, data: payloads })
+      aptos.transaction.batch.forSingleAccount({
+        sender: account,
+        data: payloads,
+      })
       const sequence_number = Number(getData('sequence_number'))
       setData('sequence_number', Number(sequence_number) + 5)
       await refetch()

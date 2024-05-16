@@ -26,7 +26,7 @@ const maxFoodAmount = 500
 
 const Page: React.FunctionComponent = () => {
   const [loading, setLoading] = useState(true)
-  const [sequenceNumber, setSequenceNumber] = useState('1')
+  const [sequenceNumber, setSequenceNumber] = useState(Number(getData('sequence_number')) ?? 1)
   const [totalPlays, setTotalPlays] = useState(0)
   const [totalFood, setTotalFood] = useState(Number(getData('totalFoodLocal')) ?? 0)
   const [accountIsCreated, setAccountIsCreated] = useState(true)
@@ -64,9 +64,7 @@ const Page: React.FunctionComponent = () => {
     ;(async () => {
       await getAccountInfo()
     })()
-  }, [secretKey, auto])
-
-  console.log('sequenceNumber', sequenceNumber)
+  }, [secretKey])
 
   const getAccountInfo = async () => {
     try {
@@ -76,7 +74,9 @@ const Page: React.FunctionComponent = () => {
         setAccountIsCreated(true)
       }
       const genesisAccount = await aptosClient.getAccount(account.accountAddress.toString())
-      setSequenceNumber(genesisAccount.sequence_number)
+      setSequenceNumber(Number(genesisAccount.sequence_number))
+      console.log('genesisAccount', genesisAccount)
+      setData('sequence_number', Number(genesisAccount.sequence_number))
     } catch (e: any) {
       console.log(e)
       if (e.message.includes('Account not found')) {
@@ -102,7 +102,7 @@ const Page: React.FunctionComponent = () => {
     refetchOnMount: false,
     refetchOnReconnect: false,
     refetchOnWindowFocus: false,
-    refetchInterval: 3000,
+    refetchInterval: 15000,
   })
 
   console.log('auto', auto)
@@ -139,6 +139,8 @@ const Page: React.FunctionComponent = () => {
         payloads.push(txn)
       }
       aptos.transaction.batch.forSingleAccount({ sender: account, data: payloads })
+      const sequence_number = Number(getData('sequence_number'))
+      setData('sequence_number', Number(sequence_number) + 5)
       await refetch()
     } catch (e) {
       console.log(e)
@@ -158,6 +160,8 @@ const Page: React.FunctionComponent = () => {
     },
     enabled: !!secretKey,
   })
+
+  console.log('seee', sequenceNumber)
 
   const { data: endTime = 0, isFetching } = useQuery({
     queryKey: ['isEnded', secretKey],
@@ -201,7 +205,9 @@ const Page: React.FunctionComponent = () => {
       setData('totalFoodLocal', totalFood + 1)
 
       pop(e)
-      setSequenceNumber(String(Number(sequenceNumber) + 1))
+      const sequence_number = Number(getData('sequence_number'))
+      setData('sequence_number', Number(sequence_number) + 1)
+
       const privateKey = new Ed25519PrivateKey(secretKey as any)
       const account = Account.fromPrivateKey({ privateKey })
       const rawTxn = await aptos.transaction.build.simple({
@@ -211,7 +217,7 @@ const Page: React.FunctionComponent = () => {
           typeArguments: [],
           functionArguments: [],
         },
-        options: { accountSequenceNumber: Number(sequenceNumber) },
+        options: { accountSequenceNumber: sequence_number },
       })
       const simulate = await simulateTransaction(account, rawTxn)
       console.log('simulate', simulate)

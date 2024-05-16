@@ -27,7 +27,6 @@ const useContract = () => {
       }
     } catch (e) {
       console.log('eee', e)
-      throw e
     }
   }
 

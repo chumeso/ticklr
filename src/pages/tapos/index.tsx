@@ -279,8 +279,11 @@ const Page: React.FunctionComponent = () => {
               </div>
               <div className="flex justify-center no-select mt-10">
                 <Button
-                  disabled={auto === 'true' || loading}
                   onClick={async (e) => {
+                    if (auto === 'true') {
+                      notification.error({ message: 'Cannot play manually when auto click is enabled.' })
+                      return
+                    }
                     if (accountIsCreated) {
                       await handleClick(e)
                     } else {

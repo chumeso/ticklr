@@ -156,3 +156,11 @@ particle {
 .ant-switch-checked{
     background-color: #CA5C3B !important;
 }
+
+.ant-collapse{
+    border: none !important;
+}
+
+.ant-collapse-header{
+    padding: 0 !important;
+}

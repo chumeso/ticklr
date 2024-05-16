@@ -145,7 +145,7 @@ export default function Home() {
 
   return (
     <div className="pt-10 sm:pt-20 pb-20 px-5">
-      <h1 className="text-[#000000] text-center text-2xl sm:text-3xl font-semibold">Your Tickle Wallet</h1>
+      <h1 className="text-[#000000] text-center text-2xl sm:text-3xl font-semibold">Your Tapos Wallet</h1>
       <TickleStep />
       <div className={'max-w-[580px] mx-auto '}>
         <Typography className="text-[#000000] font-semibold mt-16 text-lg text-center ">Your Aptos address:</Typography>

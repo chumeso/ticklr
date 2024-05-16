@@ -420,8 +420,8 @@ export const HandDogIcon = () => (
   </svg>
 )
 
-export const FishBone = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="46" height="39" viewBox="0 0 46 39" fill="none">
+export const FishBone: React.FunctionComponent<{ className?: string }> = ({ className }) => (
+  <svg className={className} xmlns="http://www.w3.org/2000/svg" width="46" height="39" viewBox="0 0 46 39" fill="none">
     <path
       d="M34.1597 12.1456C34.2492 12.4076 34.3526 12.6646 34.4697 12.9156C36.5497 17.1356 41.7997 16.0856 44.2697 12.9756C40.3774 10.533 37.4542 6.81452 35.9997 2.45557C33.7697 4.71557 33.1297 9.14557 34.1597 12.1456Z"
       fill="#BBD8D4"
@@ -1009,6 +1009,18 @@ export const RightIcon2 = () => (
       clip-rule="evenodd"
       d="M7.52843 2.86201C7.78878 2.60166 8.21089 2.60166 8.47124 2.86201L13.1379 7.52868C13.3983 7.78903 13.3983 8.21114 13.1379 8.47149L8.47124 13.1382C8.21089 13.3985 7.78878 13.3985 7.52843 13.1382C7.26808 12.8778 7.26808 12.4557 7.52843 12.1953L11.057 8.66675L3.33317 8.66675C2.96498 8.66675 2.6665 8.36827 2.6665 8.00008C2.6665 7.63189 2.96498 7.33341 3.33317 7.33341L11.057 7.33341L7.52843 3.80482C7.26808 3.54447 7.26808 3.12236 7.52843 2.86201Z"
       fill="#CA5C3B"
+    />
+  </svg>
+)
+
+export const PlusIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 32 32" fill="none">
+    <path
+      d="M16.0401 6.66699L16.0161 25.3337M6.66675 16.0003H25.3334"
+      stroke="black"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
     />
   </svg>
 )

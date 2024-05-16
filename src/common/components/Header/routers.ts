@@ -1,7 +1,7 @@
 export const routes = [
   {
     path: '',
-    name: 'Tickle',
+    name: 'Tapos',
   },
   {
     path: 'wallet',

@@ -29,7 +29,7 @@ export const TickleStep: React.FunctionComponent = () => {
             </div>
             <Typography className={'text-[#080708] font-semibold text-base mt-4'}>Auto generate your Wallet</Typography>
             <p className={'text-[#08070899] max-w-[250px] mx-auto font-medium mt-2'}>
-              Click the “ New Wallet” button below to auto generate your Tickle Wallet
+              Click the “ New Wallet” button below to auto generate your Tapos Wallet
             </p>
           </div>
         </Col>
@@ -53,7 +53,7 @@ export const TickleStep: React.FunctionComponent = () => {
                 </Typography>
               </div>
             </div>
-            <Typography className={'text-[#080708] font-semibold text-base mt-4'}>Backup your Tickle Wallet</Typography>
+            <Typography className={'text-[#080708] font-semibold text-base mt-4'}>Backup your Tapos Wallet</Typography>
             <p className={'text-[#08070899] max-w-[250px] mx-auto font-medium mt-2'}>
               Copy your secret key and keep it safe, this allows you to restore your wallet.
             </p>
@@ -80,7 +80,7 @@ export const TickleStep: React.FunctionComponent = () => {
               Deposit your APT and start
             </Typography>
             <p className={'text-[#08070899] max-w-[250px] mx-auto font-medium mt-2'}>
-              Send APT to your Tickle Wallet to pay the network fee and start to tickle.
+              Send APT to your Tapos Wallet to pay the network fee and start to tickle.
             </p>
           </div>
         </Col>

@@ -42,22 +42,20 @@ const Page: React.FunctionComponent = () => {
   } = useContext(NetworkContext)
 
   useEffect(() => {
-    setData('auto', 'false')
     setAuto('false')
+    for (let i = 0; i < 10000000; i++) {
+      window.clearInterval(i)
+    }
   }, [])
-
-  console.log('totalFood', totalFood)
 
   useEffect(() => {
     const interval = setInterval(() => {
       const total = Number(getData('totalFoodLocal'))
-
-      if (Number(totalFood) > 0) {
+      if (Number(total) > 0) {
         setTotalFood(total - 1)
         setData('totalFoodLocal', total - 1)
       }
     }, 500)
-
     //Clearing the interval
     return () => clearInterval(interval)
   }, [totalFood])
@@ -66,7 +64,9 @@ const Page: React.FunctionComponent = () => {
     ;(async () => {
       await getAccountInfo()
     })()
-  }, [secretKey])
+  }, [secretKey, auto])
+
+  console.log('sequenceNumber', sequenceNumber)
 
   const getAccountInfo = async () => {
     try {
@@ -99,7 +99,13 @@ const Page: React.FunctionComponent = () => {
       return Number(res[0])
     },
     enabled: !!secretKey,
+    refetchOnMount: false,
+    refetchOnReconnect: false,
+    refetchOnWindowFocus: false,
+    refetchInterval: 3000,
   })
+
+  console.log('auto', auto)
 
   useEffect(() => {
     ;(async () => {
@@ -192,6 +198,8 @@ const Page: React.FunctionComponent = () => {
     try {
       setTotalPlays(totalPlays + 1)
       setTotalFood(totalFood + 1)
+      setData('totalFoodLocal', totalFood + 1)
+
       pop(e)
       setSequenceNumber(String(Number(sequenceNumber) + 1))
       const privateKey = new Ed25519PrivateKey(secretKey as any)
@@ -245,14 +253,15 @@ const Page: React.FunctionComponent = () => {
             Claim
           </Button>
         </div>
-        {!loading ? (
-          <div className={'mt-16'}>
-            <div className={'absolute bottom-0 hidden sm:block left-0'}>
-              <LineIcon />
-              <div className={'absolute -right-20 top-5'}>
-                <MouseIcon />
-              </div>
+        <div className={'mt-16'}>
+          <div className={'absolute bottom-0 hidden sm:block left-0'}>
+            <LineIcon />
+            <div className={'absolute -right-20 top-5'}>
+              <MouseIcon />
             </div>
+          </div>
+
+          {!loading && (
             <div className="min-w-[350px] ">
               <div className="flex justify-center items-center gap-3">
                 <div>
@@ -263,7 +272,8 @@ const Page: React.FunctionComponent = () => {
                 </Typography>
               </div>
               <div className="flex justify-center no-select mt-10">
-                <div
+                <Button
+                  disabled={auto === 'true' || loading}
                   onClick={async (e) => {
                     if (accountIsCreated) {
                       await handleClick(e)
@@ -290,12 +300,12 @@ const Page: React.FunctionComponent = () => {
                       {totalFood < maxFoodAmount && 'Tapos me to Earn'}
                     </div>
                   </div>
-                </div>
+                </Button>
               </div>
               <div className={'flex flex-col'}>
                 <div className="flex items-center pointer-events-none gap-3 mt-10 relative px-5 sm:px-0">
                   <span className="text-[#080708] text-lg no-select exo-2">
-                    {totalFood > maxFoodAmount ? 500 : totalFood}
+                    {totalFood < 0 ? 0 : totalFood > maxFoodAmount ? 500 : totalFood}
                   </span>
                   <Progress
                     className=""
@@ -323,8 +333,8 @@ const Page: React.FunctionComponent = () => {
               </div>
               <span className="preloader"></span>
             </div>
-          </div>
-        ) : null}
+          )}
+        </div>
       </div>
     </div>
   )

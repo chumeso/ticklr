@@ -61,7 +61,10 @@ export const HeaderPage: React.FunctionComponent = () => {
                   <li>
                     <Link
                       href={`/${path}`}
-                      onClick={() => setOpen(false)}
+                      onClick={() => {
+                        setOpen(false)
+                        setData('auto', 'false')
+                      }}
                       className={` font-bold text-base ${pageName === path ? 'text-[#CA5C3B]' : 'text-[#8C8C8C]'}`}
                     >
                       {name}
@@ -101,6 +104,7 @@ export const HeaderPage: React.FunctionComponent = () => {
                   return (
                     <Menu.Item className={`${pageName === path && 'menu-active'} h-full mx-2 pr-2`} key={name}>
                       <Link
+                        onClick={() => setData('auto', 'false')}
                         href={`/${path}` || '/'}
                         className="h6 font-medium text-[#8C8C8C] relative flex items-center h-full"
                         style={{ fontSize: '16px' }}

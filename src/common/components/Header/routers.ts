@@ -1,6 +1,6 @@
 export const routes = [
   {
-    path: '',
+    path: 'tapos',
     name: 'Tapos',
   },
   {

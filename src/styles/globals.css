@@ -1,0 +1,158 @@
+@import '~antd/dist/antd.css';
+@import '~tailwindcss/tailwind.css';
+
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+}
+
+
+body {
+    background: linear-gradient(180deg, #FFF 0%, #EADBD7 100%);
+    font-family: "Roboto", sans-serif;
+    color: #8C8C8C !important;
+    min-height: 100vh;
+}
+
+html, body {
+    width: 100%;
+    height: fit-content;
+}
+
+.ant-menu::before {
+    content: none !important;
+}
+
+.ant-menu::after {
+    content: none !important;
+}
+
+.ant-menu-inline, .ant-menu-vertical, .ant-menu-vertical-left {
+    border-right: none !important;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background: transparent !important;
+}
+
+.menu-active .ant-menu-title-content a {
+    color: #CA5C3B !important;
+}
+
+.ant-modal-content {
+    background-color: #EEC5C7 !important;
+    border-radius: 16px !important;
+}
+
+particle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.game-layout {
+    min-height: calc(100vh - 75px);
+}
+
+.font-pacifico {
+    font-family: "Pacifico", cursive;
+}
+
+.tickle-box:active .cat {
+    transform: scale(0.95);
+}
+
+.ant-notification-notice {
+    background-color: #fcfcfc !important;
+}
+
+.ant-notification-notice-message {
+    color: #FF6464 !important;
+    font-size: 16px !important;
+}
+
+.ant-notification-notice-close-icon {
+    color: #fff !important;
+}
+
+::-webkit-scrollbar {
+    height: 6px;
+    width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #33343e 0 0 no-repeat padding-box;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+
+.exo-2 {
+    font-family: "Exo 2", sans-serif !important;
+}
+
+.no-select{
+    -moz-user-select: none !important;
+    -webkit-touch-callout: none!important;
+    -webkit-user-select: none!important;
+    -khtml-user-select: none!important;
+    -moz-user-select: none!important;
+    -ms-user-select: none!important;
+    user-select: none!important;
+}
+
+@media (max-width: 765px) {
+    .game-layout {
+        min-height: calc(90vh) !important;
+    }
+}
+
+.slick-list {
+    margin: 0 -12px !important;
+}
+.slick-slide > div {
+    padding: 0 12px !important;
+}
+
+.slick-next,
+.slick-prev {
+    display: none !important;
+}
+
+
+.headerNav_mobileClosed {
+    height: 0;
+}
+.headerNav_mobileOpen {
+    height: 100%;
+    max-height: calc(100vh);
+}
+
+.header-nav-mobile{
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    overflow: hidden;
+    background-color: #ffffff;
+    transition-property: all;
+    transition-duration: .5s;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+}
+
+.input-format:focus-visible{
+    border:0 !important;
+    outline: none !important;
+}
+
+.ant-switch-checked{
+    background-color: #CA5C3B !important;
+}

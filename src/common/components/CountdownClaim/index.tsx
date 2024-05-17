@@ -60,13 +60,14 @@ const CountdownClaim: React.FunctionComponent<CountdownProps> = (props) => {
   const formatTimeLessThanTen = (time: number): string => (time >= 10 ? time.toString() : `0${time}`)
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+  setTimeout(() => {
+    const timer = setInterval(() =>  {
       setTimeLeft(calculateTimeLeft())
-    }, 1000)
-    return () => {
-      clearTimeout(timer)
-    }
-  })
+    }, 1000);
+    return () => clearInterval(timer);
+
+  },1000)
+  });
 
   return (
     <div className={'flex items-center text-[#006B61] gap-2 text-3xl font-medium'}>

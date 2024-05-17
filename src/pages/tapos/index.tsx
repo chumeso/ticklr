@@ -250,7 +250,7 @@ const Page: React.FunctionComponent = () => {
               }}
             />
           </div>
-          <p className={'text-[#000000] mt-3'}>You can claim the token at the end of the Campaign</p>
+          <p className={'text-[#000000] mt-1 text-base'}>You can claim the token at the end of the Campaign</p>
           <Button
             disabled={!isClaimStarted}
             className={
@@ -261,9 +261,9 @@ const Page: React.FunctionComponent = () => {
           </Button>
         </div>
         <div className={'mt-16'}>
-          <div className={'absolute bottom-0 hidden sm:block left-0'}>
+          <div className={'absolute bottom-40 hidden sm:block left-0'}>
             <LineIcon />
-            <div className={'absolute -right-20 top-5'}>
+            <div className={'absolute -right-16 -bottom-1'}>
               <MouseIcon />
             </div>
           </div>
@@ -307,14 +307,14 @@ const Page: React.FunctionComponent = () => {
                       }
                     >
                       {totalFood >= maxFoodAmount && 'meowwwwww......'}
-                      {totalFood < maxFoodAmount && 'Tapos me to Earn'}
+                      {totalFood < maxFoodAmount && 'Tickle me to earn'}
                     </div>
                   </div>
                 </Button>
               </div>
               <div className={'flex flex-col'}>
                 <div className="flex items-center pointer-events-none gap-3 mt-10 relative px-5 sm:px-0">
-                  <span className="text-[#080708] text-lg no-select exo-2">
+                  <span className="text-[#006B61] font-medium text-lg no-select exo-2">
                     {totalFood < 0 ? 0 : totalFood > maxFoodAmount ? 500 : totalFood}
                   </span>
                   <Progress
@@ -332,12 +332,12 @@ const Page: React.FunctionComponent = () => {
                   <HandIcon />
                 </div>
                 <div className={'text-center block'}>
-                  <div className={'text-[#000000] font-medium'}>Auto Tapos</div>
+                  <div className={'text-[#000000] font-medium'}>Auto Tickle</div>
                   <Switch checked={auto === 'true'} onChange={handleChangeAuto} />
                 </div>
               </div>
 
-              <div className={'text-center mt-5 text-[#000000]'}>
+              <div className={'text-center text-base mt-5 text-[#000000]'}>
                 <div>Total transactions: {formatNumberBalance(totalCrrPlay, 0)}</div>
                 <div>Total accounts: 1,234,458</div>
               </div>

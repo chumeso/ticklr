@@ -166,6 +166,3 @@ particle {
     padding: 0 !important;
 }
 
-.ant-btn:hover, .ant-btn:focus{
-    border: none !important;
-}

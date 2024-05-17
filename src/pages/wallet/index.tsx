@@ -230,7 +230,7 @@ export default function Home() {
                 setIsImport(true)
                 setIsImportSuccess(false)
               }}
-              className="bg-transparent border-[#CA5C3B] text-[#CA5C3B] font-medium rounded-[100px] h-10 min-w-[100px]"
+              className="bg-transparent border-[#CA5C3B] hover:border-[#CA5C3B] text-[#CA5C3B] font-medium rounded-[100px] h-10 min-w-[100px]"
             >
               Import
             </Button>

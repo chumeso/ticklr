@@ -292,7 +292,7 @@ const Page: React.FunctionComponent = () => {
                       notification.error({ message: 'You need to fund the game wallet with apt first.' })
                     }
                   }}
-                  className="w-[320px] no-select sm:w-[420px] tickle-box h-[320px] sm:h-[420px] flex justify-center items-center bg-[#EEC5C7] rounded-full"
+                  className="w-[320px] no-select sm:w-[420px] hover:border-0 focus:border-0 tickle-box h-[320px] sm:h-[420px] flex justify-center items-center bg-[#EEC5C7] rounded-full"
                 >
                   <div>
                     <div className={'cat pointer-events-none w-[200px] h-[200px] flex items-center justify-center'}>

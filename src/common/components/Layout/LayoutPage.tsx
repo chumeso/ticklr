@@ -4,7 +4,7 @@ import React, { ReactNode, useContext, useEffect } from 'react'
 import { Footer } from '@/common/components/Footer'
 import { HeaderPage } from '@/common/components/Header'
 import { NetworkContext } from '@/common/context'
-import { getData, setData } from '@/common/hooks/useLocalstorage'
+import { getData, removeData, setData } from '@/common/hooks/useLocalstorage'
 import { faucetClient } from '@/config/aptosClient'
 import { Account, Ed25519PrivateKey } from '@aptos-labs/ts-sdk'
 
@@ -46,6 +46,8 @@ export const LayoutPage: React.FunctionComponent<{ children: ReactNode }> = ({ c
       setSecretKeyContext(HexString.fromUint8Array(account.privateKey.toUint8Array()).toString())
       setAddressContext(account.accountAddress.toString())
       setData('secretKey', JSON.stringify(HexString.fromUint8Array(account.privateKey.toUint8Array()).toString()))
+      await removeData('totalFoodLocal')
+      await removeData('sequence_number')
     } catch (e) {
       console.log('e', e)
     }

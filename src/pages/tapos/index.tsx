@@ -162,8 +162,6 @@ const Page: React.FunctionComponent = () => {
     enabled: !!secretKey,
   })
 
-  console.log('seee', sequenceNumber)
-
   const { data: endTime = 0, isFetching } = useQuery({
     queryKey: ['isEnded', secretKey],
     queryFn: async () => {

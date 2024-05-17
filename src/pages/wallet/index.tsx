@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from 'react'
 
 import { ModalWarningImportWallet } from '@/common/components/Modals/ModalWarningImportWallet'
 import { NetworkContext } from '@/common/context'
-import { setData } from '@/common/hooks/useLocalstorage'
+import { removeData, setData } from '@/common/hooks/useLocalstorage'
 import { useModal } from '@/common/hooks/useModal'
 import { TickleStep } from '@/common/components/TickleStep'
 import { Account, Ed25519PrivateKey } from '@aptos-labs/ts-sdk'
@@ -101,6 +101,8 @@ export default function Home() {
         setSecretKeyContext(HexString.fromUint8Array(account.privateKey.toUint8Array()).toString())
         setIsImportSuccess(true)
         setIsImport(false)
+        await removeData('totalFoodLocal')
+        await removeData('sequence_number')
         toggle()
       }
     } catch (e: any) {
@@ -126,6 +128,8 @@ export default function Home() {
       setSecretKeyContext(account.accountAddress.toString())
       setSecretKey(HexString.fromUint8Array(account.privateKey.toUint8Array()).toString())
       setData('secretKey', JSON.stringify(HexString.fromUint8Array(account.privateKey.toUint8Array()).toString()))
+      await removeData('totalFoodLocal')
+      await removeData('sequence_number')
       await faucetAptTestnet(account.accountAddress.toString())
       setIsImportSuccess(true)
       toggle()

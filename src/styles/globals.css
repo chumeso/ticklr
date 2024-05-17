@@ -46,13 +46,13 @@ html, body {
 }
 
 particle {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
+    position: fixed ;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
     background-repeat: no-repeat;
-    background-size: contain !important;
+    background-size: contain ;
     z-index: 10000 !important;
 }
 

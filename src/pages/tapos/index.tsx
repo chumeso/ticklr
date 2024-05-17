@@ -176,6 +176,9 @@ const Page: React.FunctionComponent = () => {
       return Number(res[0])
     },
     enabled: !!secretKey,
+    refetchOnMount:false,
+    refetchOnReconnect:false,
+    refetchOnWindowFocus:false,
   })
 
   useEffect(() => {

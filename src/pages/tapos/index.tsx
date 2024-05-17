@@ -234,6 +234,10 @@ const Page: React.FunctionComponent = () => {
   }
 
   const handleChangeAuto = (checked: boolean) => {
+    if (!accountIsCreated) {
+      notification.error({ message: 'You need to fund the game wallet with apt first.' })
+      return;
+    }
     console.log(`switch to ${checked}`)
     setData('auto', checked ? 'true' : 'false')
     setAuto(String(checked))
